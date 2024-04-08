@@ -10,3 +10,90 @@ Give examples demonstrating the use of this to refer to instance variables and m
 Task-2: 
 a.	Recall the basic principles of exception handling in Java, give example of try-catch blocks and the handling of checked exception. 
 b.  Write a program to demonstrate Interface and implements multiple interface in a java.
+
+Task 1-a) code
+
+public class Vehicle {
+    String manufacturer;
+
+    public Vehicle(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+}
+
+public class Car extends Vehicle {
+    int numOfDoors;
+    String fuelType;
+
+    public Car(String manufacturer, int numOfDoors, String fuelType) {
+        super(manufacturer); 
+        this.numOfDoors = numOfDoors;
+        this.fuelType = fuelType;
+    }
+}
+
+b) code
+public class Car {
+    String model;
+
+    public Car(String model) {
+        this.model = model; // using this to refer to instance variable
+    }
+
+    public void printModel() {
+        System.out.println("Model: " + this.model); // using this to refer to instance method
+    }
+}
+
+Task 2-a)
+
+public class Example {
+    public static void main(String[] args) {
+        try {
+            FileReader fileReader = new FileReader("nonexistent_file.txt");
+        } catch (FileNotFoundException e) {
+          
+            System.out.println("File not found: " + e.getMessage());
+        }
+    }
+}
+
+
+b)
+
+interface Vehicle {
+    void drive();
+}
+
+interface Engine {
+    void start();
+}
+
+// Implement the interfaces in a class
+class Car implements Vehicle, Engine {
+    @Override
+    public void drive() {
+        System.out.println("Car is being driven.");
+    }
+
+    @Override
+    public void start() {
+        System.out.println("Car engine started.");
+    }
+}
+
+public class InterfaceDemo {
+    public static void main(String[] args) {
+        // Create an instance of the Car class
+        Car myCar = new Car();
+
+        // Call methods defined in the interfaces
+        myCar.start();
+        myCar.drive();
+    }
+}
+
+
+
+
+
